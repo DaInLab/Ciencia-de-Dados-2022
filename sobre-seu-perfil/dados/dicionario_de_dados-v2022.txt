@@ -1,0 +1,64 @@
+Questionário "Seu Perfil"
+Dicionário de Dados
+
+Retirados:
+Nome completo
+Grupos
+Endereço de email
+
+#-------------------------------------------------#
+
+Variável: data_envio
+data (dd/mm/aaaa)
+
+Variável: genero
+1.Feminino
+2.Masculino
+3.Outro/Não declarado
+
+Variável: tipo_aluno
+1. Regular
+2. Especial
+
+Variável: formacao_basica
+Resposta aberta/discursiva/texto
+
+Variável: curso
+1. Mestrado
+2. Doutorado
+
+Variável: faixa_etaria
+1.18 a 21 anos 
+2.22 a 24 anos 
+3.25 a 29 anos 
+4.30 a 34 anos 
+5.35 a 39 anos 
+6.40 a 44 anos 
+7.45 a 49 anos 
+8.50 a 59 anos 
+9.mais de 59 anos
+
+Variável: tem_computador
+1-não
+2.sim
+
+Variável: sistema_operacional
+0.Não sei!
+1.Windows
+2.MacOS
+3.Linux
+4.Outro
+
+Variável: fabricante_computador
+Resposta aberta/discursiva/texto
+
+Variável: conhece_linguagem_ciencia_dados
+1.Não
+2.Sim
+
+Variável: qual_quallinguagem_ciencia_dados
+Resposta aberta/discursiva/texto
+
+Variável: expectativa_disciplina
+Resposta aberta/discursiva/texto
+#-------------------------------------------------#
