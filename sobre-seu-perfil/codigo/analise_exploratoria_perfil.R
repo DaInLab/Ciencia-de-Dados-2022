@@ -9,7 +9,7 @@ library(readxl)
 #O data frame é usado para armazenar as tabelas de dados em R. 
 #É uma tabela ou uma estrutura bidimensional do tipo matriz em que cada coluna contém os valores de uma variável
 #e cada linha contém um conjunto de valores de cada coluna.
-#É uma lista de vetores de igual comprimento
+#É uma lista de vetores de igual comprimento.
 
 meu.dataframe <-read_excel("./dados/sobre-seu-perfil-aed.xlsx")
 
@@ -60,7 +60,7 @@ pie(table(meu.dataframe$genero), labels = lbls, edges = 200, radius = 0.8,
     lty = NULL, main = "Gênero dos Alunos")
 
 # Quanto ao tipo de matrícula do aluno
-# Fatores, onde 1 = Regular, 2 = Especial)
+# Fatores, onde 1 = Regular, 2 = Especial
 pct <- round(table(meu.dataframe$tipo_aluno)/sum(table(meu.dataframe$tipo_aluno))*100, digits=1)
 pct
 #    1    2 
@@ -106,7 +106,7 @@ barplot(freq_formacao,
 text(freq_formacao, pct, cex=1.0, pos = 3, offset = 0.5,  col = "red")
 
 # Quanto ao curso de origem
-# Fatores, onde 1 = Mestrado, 2 = Doutorado)
+# Fatores, onde 1 = Mestrado, 2 = Doutorado
 pct <- round(table(meu.dataframe$curso)/sum(table(meu.dataframe$curso))*100, digits=1)
 pct
 #    1    2 
@@ -129,6 +129,11 @@ pie(table(meu.dataframe$curso), labels = lbls, edges = 200, radius = 0.8,
 #7.45 a 49 anos 
 #8.50 a 59 anos 
 #9.mais de 59 anos
+
+table(meu.dataframe$faixa_etaria)
+# 2 3 4 5 6 7 8 
+# 1 3 2 2 6 2 2 
+
 pct <- round(table(meu.dataframe$faixa_etaria)/sum(table(meu.dataframe$faixa_etaria))*100, digits=1)
 pct
 #   2    3    4    5    6    7    8 
@@ -172,7 +177,7 @@ pie(table(meu.dataframe$fabricante_computador), labels = lbls, edges = 200, radi
     lty = NULL, main = "Marca dos Laptops")
 
 # Quanto ao conhecimento de ambiente/programa de ciência de dados
-# Fatores, onde 1 = Não, 2 = Sim)
+# Fatores, onde 1 = Não, 2 = Sim
 pct <- round(table(meu.dataframe$conhece_linguagem_ciencia_dados)/sum(table(meu.dataframe$conhece_linguagem_ciencia_dados))*100, digits=1)
 pct
 #    1    2 
