@@ -1,4 +1,6 @@
-# Versâo atualizada em abril de 2020
+# Versâo atualizada em abril de 2022
+# Acertando erro de localização de diretório de trabalhp
+setwd(paste0(getwd(), "/jc"))
 # Atenção:
 # Antes de executar o código: 
 # - No RStudio, ir até a aba Session -> Set Working Directory -> Choose Directory e ir até o diretório "<drive>:/JC" (Windows)

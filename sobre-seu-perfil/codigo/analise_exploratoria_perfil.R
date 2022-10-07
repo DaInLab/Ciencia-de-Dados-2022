@@ -1,4 +1,8 @@
-# Versão 4 em 05 de setembro de 2022
+# Nova versão de outubro de 2022
+#
+# Definindo o diretório de trabalho!
+if(Sys.info()["sysname"] == "Darwin") setwd("/Users/jpalbino/Library/Mobile Documents/com~apple~CloudDocs/GitHub/Ciencia-de-Dados-2022/sobre-seu-perfil") else setwd(":sobre-seu-perfil/EDA")
+
 # No R, para utilizar determinadas funções, que não estão no pacote "base" é preciso "carregar" a biblioteca no programa
 # O comando que realiza esta função é chamado de "library"
 # Neste caso, utilizaremos o "pacote" readxl diretamente do repositório existente no CRAN-R (oficial)
@@ -95,15 +99,15 @@ pie(table(meu.dataframe$formacao_basica), labels = lbls, edges = 200, radius = 0
     lty = NULL, main = "Formação dos Alunos")
 
 freq_formacao = unname(table(meu.dataframe$formacao_basica))
-names(freq_formacao) <- c("Admin.","Comput.", "Com. Social", "Design", "Direito", "Ed. Física","História", "Licenc.", "Rel. Públ.", "Tecnologia")
-pct <- paste(unname(round(freq_formacao/sum(freq_formacao)*100, digits=1)), "%")
+names(freq_formacao) <- c("Adm.","Comp", "C.So", "Des.", "Dir.", "Ed.F","Hist", "Lic.", "R.P.", "Tec.")
+pct <- paste0(unname(round(freq_formacao/sum(freq_formacao)*100, digits=1)), "%")
 pct
 
 barplot(freq_formacao,
         main = "Formação dos Alunos",
         xlab = "Formação", ylab = "Quantidade de alunos",
         density = 60, angle = 45, ylim = c(0,6))
-text(freq_formacao, pct, cex=1.0, pos = 3, offset = 0.5,  col = "red")
+text(freq_formacao, unname(pct), cex=1.25, pos = 1, offset = 0.5,  col = "red")
 
 # Quanto ao curso de origem
 # Fatores, onde 1 = Mestrado, 2 = Doutorado
@@ -236,5 +240,4 @@ set.seed(1234) # for reproducibility
 wordcloud(words = df$word, freq = df$freq, min.freq = 1,      
           max.words=200, random.order=FALSE, rot.per=0.35,       
           colors=brewer.pal(8, "Dark2"))
-
 

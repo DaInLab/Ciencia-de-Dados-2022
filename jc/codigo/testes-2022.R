@@ -1,5 +1,9 @@
+# Colocando a localização do diretório de trabalho
+trab = getwd()
+setwd(paste0(dtrab, "/mapa"))
+
 library(pdftools)
-download.file("http://arxiv.org/pdf/1403.2805.pdf", "1403.2805.pdf", mode = "wb")
+download.file("http://arxiv.org/pdf/1403.2805.pdf", "./dados/1403.2805.pdf", mode = "wb")
 txt <- pdf_text("./dados/1403.2805.pdf")
 
 # first page text
@@ -24,5 +28,8 @@ fonts <- pdf_fonts("./dados/1403.2805.pdf")
 bitmap <- pdf_render_page("./dados/1403.2805.pdf", page = 1)
 
 # save bitmap image
-png::writePNG(bitmap, "page.png")
-webp::write_webp(bitmap, "page.webp")
+png::writePNG(bitmap, "./dados/page.png")
+webp::write_webp(bitmap, "./dados/page.webp")
+
+# Reconstituindo diretório original...
+setwd(dtrab)
