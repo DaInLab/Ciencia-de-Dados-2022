@@ -1,4 +1,7 @@
-## Versão atualizada em abril de 2020
+# Versão atualizada em outubro de 2022
+# Colocando a localização do diretório de trabalho
+dtrab = getwd()
+setwd(paste0(dtrab, "/mapa"))
 #Observações:
 ## Baseado em: https://dataficacao.wordpress.com/2017/02/21/criando-mapa-brasil-r/
 #O "shapefile" do Brasil no site do IBGE estão no endereço: http://downloads.ibge.gov.br/downloads_geociencias.htm
@@ -18,6 +21,8 @@ if (!"rgdal" %in% installed.packages()) install.packages("rgdal")
 if (!"RColorBrewer" %in% installed.packages()) install.packages("RColorBrewer")
 
 # ...e carregando os pacotes----
+# options("rgdal_show_exportToProj4_warnings"="none") before loading sp or rgdal.
+
 library(rgeos)
 library(maptools)     
 library(spdep)          
@@ -79,3 +84,6 @@ leaflet(data = brasileiropg) %>%
   addLegend("bottomright", pal = pal, values = ~brasileiropg$Score,
             title = "Pontos Conquistados",
             opacity = 1)
+
+# Reconstituindo diretório original...
+setwd(dtrab)

@@ -1,0 +1,25 @@
+Package: rgcookbook
+Title: R Graphics Cookbook
+Version: 2.0.0
+Authors@R: c(
+  person("Winston", "Chang", , "winston@rstudio.com", c("aut", "cre"))
+  )
+URL: https://github.com/wch/rgcookbook
+Depends:
+    R (>= 3.1.0)
+Imports:
+    bookdown,
+    corrplot,
+    extrafont,
+    gcookbook,
+    ggrepel,
+    hexbin,
+    igraph,
+    mapproj,
+    maps,
+    patchwork,
+    sf,
+    svglite,
+    tidyverse,
+    vcd,
+    viridis
