@@ -1,4 +1,8 @@
-# Nova versão de setembro de 2022
+# Nova versão de outubro de 2022
+#
+# Definindo o diretório de trabalho!
+if(Sys.info()["sysname"] == "Darwin") setwd("/Users/jpalbino/Library/Mobile Documents/com~apple~CloudDocs/GitHub/Ciencia-de-Dados-2022/sobre-seu-perfil") else setwd(":sobre-seu-perfil/EDA")
+
 #lendo no formato xlsx
 if(!"readxl" %in% installed.packages()) install.packages("readxl")
 library(readxl)
