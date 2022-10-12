@@ -6,8 +6,6 @@ str(iris) #estrutura do dataframe
 
 summary(iris)
 
-summary(iris)
-
 #lendo nas primeiras 10 linhas
 
 head(iris,10)

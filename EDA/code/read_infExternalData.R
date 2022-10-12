@@ -67,3 +67,4 @@ curl_download("https://www.gov.uk/government/uploads/system/uploads/attachment_d
 data3=read.csv("./data/local-data3.csv",header=F, skip = 1)
 names(data3) = c("Minister", "Date received", "From","Gift", "Value (?)", "Outcome")
 head(data3)
+
