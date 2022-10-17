@@ -3,7 +3,7 @@
 #change to your own working directory
 if(Sys.info()["sysname"] == "Darwin") 
   setwd("/Users/jpalbino/Library/Mobile Documents/com~apple~CloudDocs/GitHub/Ciencia-de-Dados-2022/EDA") else 
-  setwd("C/:ciencia-de-dados-2022/EDA")
+  setwd("C:/ciencia-de-dados/EDA")
 
 ## ler arquivos do tipo csv e texto
 resp1=read.csv("./data/Resp1.csv",header=T)
@@ -67,4 +67,3 @@ curl_download("https://www.gov.uk/government/uploads/system/uploads/attachment_d
 data3=read.csv("./data/local-data3.csv",header=F, skip = 1)
 names(data3) = c("Minister", "Date received", "From","Gift", "Value (?)", "Outcome")
 head(data3)
-

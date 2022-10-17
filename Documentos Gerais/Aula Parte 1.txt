@@ -1,0 +1,67 @@
+
+> # Criado objetos
+> x <- 10 # o objeto x receberá o valor 10
+> 15 -> y.A # o objeto y.A receberá o valor 15 !!
+> x <- 6 # o objeto x receberá o valor 6
+> Y1=13 # o objeto Y1 receberá o valor 13
+> ## Observe que existe diferença entre maiúscla e minúscula ! Mesmo no Ruindows!!
+> # Mostrando o conteúdo dos objetos
+> x
+[1] 6
+> Y1
+[1] 13
+> # Exemplo de função em R
+> sqrt(4)
+[1] 2
+> # atribuindo o resultado da função sqrt para a variável z
+> z <- sqrt(99)
+> #mostrando o conteúdo de z
+> z
+[1] 9.949874
+> # Observação: o número 1 entre colchetes [] significa que a visualização do objeto inicia-se pelo seu primeiro conteúdo (ou indíce) e, nesse caso, único elemento!
+# No R há um comando para "remover objetos": remove() ou rm()
+> rm(x)
+> # Exemplos:
+> A<-1 # cria o objeto A
+> B<-2 # cria o objeto B
+> rm(A,B) # remove os objetos A e B
+> # Para remover TODOS os objetos da sua sessão atual R digite:
+> rm(list=ls()) #limpa tudo !!
+> Session -> Clear Workspace
+Erro: unexpected symbol in "Session -> Clear Workspace"
+> # Outras formas de apagar todos os objetos da sessão: pelo menu Session -> Clear Workspace ou pela "vassorinha"
+
+ # Listando Objetos
+> # O comando ls() mostra os objetos que existem em sua sessão atual do R
+> ls()
+character(0)
+> # Exemplo:
+> a<-1; b=2; c<-3 # o caracter ";" serve ára separar comandos na mesma linha...
+> x="uso"; y="do comando"; z<-"list()"
+> x;y;z #exibindo os objetos x, y e z 
+[1] "uso"
+[1] "do comando"
+[1] "list()"
+> # o comando ls() lista os objetos existentes na memória
+> ls()
+[1] "a" "b" "c" "x" "y" "z"
+> # Observe que no ambiente do RStudio, as variáveis e seus conteúdos s~"ao mostrados na aba "Environment" 
+> # Estrutura de Dados
+> # vector: vetor com um ou mais elementos equivalente a array com apenas uma dimensão
+> # matrix : matriz equivalente a uma array com duas dimensões
+> # array: pode conter uma (vetor), duas (matriz) ou mais dimensões!
+> # fator: vetor que representa dados categóricos
+> # data.frame: parecido com matriz, porém permite colunas de tipos diferentes em um mesmo objeto
+> # list: objeto que permite combinar diferentes estruturas de dados em um único objeto
+> tipo.vetor = c(1,4,7,10)
+> # Ver os Atributos de um Objeto
+> mode(tipo.vetor)
+[1] "numeric"
+> class(tipo.vetor)
+[1] "numeric"
+> typeof(tipo.vetor)
+[1] "double"
+> storage.mode(tipo.vetor)
+[1] "double"
+> tipo.vetor
+[1]  1  4  7 10
