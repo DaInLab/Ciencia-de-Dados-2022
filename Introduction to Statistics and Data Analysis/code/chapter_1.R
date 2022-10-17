@@ -11,7 +11,7 @@
 # Definindo o diretório de trabalho!
 if(Sys.info()["sysname"] == "Darwin")
   setwd("~/Library/Mobile Documents/com~apple~CloudDocs/GitHub/Ciencia-de-Dados-2022/Introduction to Statistics and Data Analysis") else 
-    setwd("C:ciencia-de-dados-2022/EDA")
+    setwd("D:/Github/Ciencia-de-Dados-2022/Introduction to Statistics and Data Analysis")
 #setwd('C:/directory')
 # setwd() specifies the working directory. 
 
@@ -27,3 +27,4 @@ View(pizza)
 
 # We can also can get an overview of the data directly in the R-console by displaying only the top lines of the data with head().
 head(pizza)
+

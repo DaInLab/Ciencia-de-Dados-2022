@@ -1,10 +1,17 @@
+# --------------------------------------------------------------------------------------------------------------
+# Original: Exploratory Data Analysis in R for beginners (Part 1)
+# URI:<https://towardsdatascience.com/exploratory-data-analysis-in-r-for-beginners-fe031add7072>
+# Author: Joe Tran
+# Date: Oct 9, 2019
+#
+#
 # A Análise Exploratória de Dados (EDA) é o processo de analisar e visualizar os dados 
 # para obter uma melhor compreensão dos dados e obter informações a partir deles. 
 # Existem várias etapas envolvidas ao fazer EDA, mas as etapas comuns podem ser resumidas em:
-# 1. Importe os dados
-# 2.Limpe os dados
-# 3.Processe os dados
-# 4.Visualize os dados
+# 1.Importar os dados
+# 2.Limpar os dados
+# 3.Processar/transformar os dados
+# 4.Visualizar (data viz) os resultados
 # Neste script em R o processo de EDA se dará por meio da análise do conjunto de dados 
 # de pontuação do PISA disponível em:  <https://www.oecd.org/pisa/data/2015database/>
 
@@ -214,5 +221,33 @@ ggplot(data=df, aes(x=reorder(Country.Name, Maths.Diff), y=Maths.Diff)) +
 #   em torno de 0 em cada um desses países. 
 #   Este é um bom insight talvez para os formuladores de políticas porque não queremos uma enorme lacuna entre o desempenho de meninos e meninas na educação.
 
-# Pode-se fazer a mesma coisa para verificar a pontuação de Leitura e de Ciências.
+# Pode-se fazer a mesma coisa para verificar a pontuação em Leitura e em Ciências.
+
+#3. Gráfico de correlação
+# O objetivo desta seção sobre gráfico de correlação é apresentar como calcular a correlação entre variáveis em R. 
+
+df = df[,c(1,3,4,6,7,9,10)] #select relevant columns
+
+# Para criar um gráfico de correlação, basta usar a função cor():
+res = cor(df[,-1]) # -1 here means we look at all columns except the first column
+res
+
+# Pode-se calcular o valor p para ver se a correlação é significativa
+
+install.packages("Hmisc")
+library("Hmisc")
+res2 <- rcorr(as.matrix(df[,-1]))
+res2
+
+# Quanto menor o valor de p, mais significativa é a correlação.
+# Para o conjunto de dados utilizado, é óbvio que todas as variáveis estão correlacionadas..
+
+# Vizualizando:
+install.packages("corrplot")
+
+library(corrplot)
+corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+# Quanto mais forte a cor e quanto maior o tamanho, maior a correlação.
+# O resultado é semelhante ao que obtivemos na correlação anterior: todas as variáveis são intercorrelacionadas.
 

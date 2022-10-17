@@ -1,0 +1,411 @@
+> # Principais tipos de objetos em R
+> # character: texto ou caracteres
+> # numeric: números inteiros ou reais
+> # logical: verdadeiro (TRUE) ou falso (FALSE)
+> # complex: números complexos 
+> # list: combina diferentes tipos em um mesmo objeto
+> # function: comandos (função criada pelo próprio programador)
+> #__-- Cada objeto só pode ser de um determinado tipo !
+> # Data frame / list estruras de dados mais complexas pode conter diferentes tipos
+> # Exemplos
+> nome<-"Júlio" # criando objeto do tipo caracter/texto
+> class(nome)
+[1] "character"
+> mode(nome)
+[1] "character"
+> valor<- 2 # objeto numérico
+> mode(valor)
+[1] "numeric"
+> 3+valor #operação aritmética com "valor"
+[1] 5
+> # Se tentar realizar operação matemática com tipos diferentes...
+> 3+nome
+Error in 3 + nome : argumento não-numérico para operador binário
+> sobrenome = " Nogueira"
+> nome+sobrenome
+Error in nome + sobrenome : argumento não-numérico para operador binário
+>  # Para "juntar" dois tipos texto, comando paste() ou paste0()
+> paste(nome, sobrenome)
+[1] "Júlio  Nogueira"
+> paste0(nome, sobrenome)
+[1] "Júlio Nogueira"
+> # Operações com outros tipos:
+> verdadeiro = T # Pode-se escrever TRUE ou apenas T maiúsculo
+> class(verdadeiro)
+[1] "logical"
+> falso <- FALSE
+> mode(falso)
+[1] "logical"
+# Operações aritméticas com objeto tipo "logical" 
+> 2+verdadeiro # Equivale a somar 2+1
+[1] 3
+# Observar: TRUE tem valor numérico 1!
+> 2+falso # Eqivale a somar 2+0!
+[1] 2
+# Observar: FALSE tem valor numérico 0!
+> # Outro atributo de objeto, além do tipo, é o "tamanho"
+> # Exemplos:
+> length(a)
+[1] 1
+> sequencia <- seq(1,10,1) # sequência de 10 números
+> class(sequencia)
+[1] "numeric"
+> length(sequencia)
+[1] 10
+> # Outros atributos: dimensão, nomes (rótulos)...
+> # Exemplo:
+> escola = c(100,45,55) # objeto com 3 elementos
+> escola # exibir seu conteúdo
+[1] 100  45  55
+> length(escola)
+[1] 3
+> names(escola)<- c("alunos", "masculino", "feminino")
+> escola
+   alunos masculino  feminino 
+      100        45        55 
+> # O comando str() mostra de forma compacta, a estrutura de um objeto!
+> str(escola)
+ Named num [1:3] 100 45 55
+ - attr(*, "names")= chr [1:3] "alunos" "masculino" "feminino"
+> # O str() mostra que o objeto "escola" possui três elementos, do tipo numérico (num), e seu conteúdo é 100, 45 e 55. Além disso, este objeto "escola" possui o atributo "names" com três elementos do tipo caracter (chr) sendo eles: alunos, masculino e feminino! 
+#
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+#
+> # Objetos Especiais
+> # Vetor
+> # Vetor (vector)
+> # A maneira mais fácil de criar um vetor é utilizando o comando c(), que concatena elementos em um único objeto !
+> x<- c(2,3,5,7,11)
+> x
+[1]  2  3  5  7 11
+> # Os argumentos do comando c() podem ser tanto elementos únicos quanto outros objetos com um ou mais elemntos!
+> y <- c(x, 13,17,19)
+> y
+[1]  2  3  5  7 11 13 17 19
+> # Sequências
+> # Produz seqências numéricas
+> # Argumentos from (inicial), to (final) e o incremento (by)
+> seq(1,10)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> seq(1,10,1)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> seq(1,10,2)
+[1] 1 3 5 7 9
+> # Para gerar um vetor usado o comando de sequência, utiliza-se dois pontos: 
+> a <- 1:10
+> a
+ [1]  1  2  3  4  5  6  7  8  9 10
+> str(a)
+ int [1:10] 1 2 3 4 5 6 7 8 9 10
+> longo <- 100:50 # sequência decrescente de 100 a 50
+> longo # exibir o conteúdo do objeto
+ [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86
+[16]  85  84  83  82  81  80  79  78  77  76  75  74  73  72  71
+[31]  70  69  68  67  66  65  64  63  62  61  60  59  58  57  56
+[46]  55  54  53  52  51  50
+> # Se o vetor é muito longo, o R usa linhas subsequentes para mostrar os valores
+> # Outro caso "especial" de vetor é o comando LETTERS
+> LETTERS [1:6]
+[1] "A" "B" "C" "D" "E" "F"
+> # Outro caso "especial" de vetor é o comando LETTERS/letters
+> letters[1:6]
+[1] "a" "b" "c" "d" "e" "f"
+> month.abb[1:3]
+[1] "Jan" "Feb" "Mar"
+> month.name[1:3]
+[1] "January"  "February" "March"   
+> pi
+[1] 3.141593
+> # Índice em vetores
+> # Os elementos de um vetor são acessados através dos seus índices, com o uso de colchetes []
+> x = 10:1 # sequencia de 10 a 1
+> x
+ [1] 10  9  8  7  6  5  4  3  2  1
+> x[3] # o terceiro elemento de x
+[1] 8
+> x[5:7]
+[1] 6 5 4
+> x[5:7] # do quinto ao sétimo elemento
+[1] 6 5 4
+> x[1,4] # o primeiro e o quarto elemento
+Error in x[1, 4] : número incorreto de dimensões
+> x[c(1,4)] # o primeiro e o quarto elemento
+[1] 10  7
+> x[x,6] # apenas os elementos menores que 6 
+Error in x[x, 6] : número incorreto de dimensões
+> x[x<6] # apenas os elementos menores que 6 
+[1] 5 4 3 2 1
+> x[-9] # todos, menos o nono elemento de x
+[1] 10  9  8  7  6  5  4  3  1
+> x[-c(1,3)] # todos, menos o primeiro e o terceiro
+[1] 9 7 6 5 4 3 2 1
+>
+ # Matriz
+> # Criando Matrizes
+> # Há diversas formas de se criar uma matriz. 
+> # Exemplo 1:
+> x<-1:12 # cria uma sequência de 1 a 12 em x
+> xmat1 = matrix(x, ncol = 3) # matriz de 3 colunas com os elementos de x
+> xmat1
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+> # Exemplo 2:
+> # Agora gerando matriz por coluna!
+> xmat2 <- matrix(x, nrow = 4) # matriz de quatro linhas com x
+> xmat2
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+> # Agora gerando matriz por linha!
+> # Observar que, através deste comando matrix() com apenas um argumento, a matriz é preenchida ao longo das colunas!
+> # para preencher por linhas, deve-se usar o argumento byrow
+> xmat3 <- matrix(x, ncol=3, byrow=T) # preenchendo a matriz por linhas
+> xmat3
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+[4,]   10   11   12
+> # Pode-se também criar matriz com um único valor, definindo os dois argumentos de uma vez:
+> mat.zeros<- matrix(0, nrow = 4, ncol = 3) # matriz de zeros!
+> mat.zeros
+     [,1] [,2] [,3]
+[1,]    0    0    0
+[2,]    0    0    0
+[3,]    0    0    0
+[4,]    0    0    0
+> # Obtendo Informações sobre a Matriz
+> # Pode-se verificar a dimensão da matriz com o comando dim()
+> x1<-matrix(1:12, ncol=4) # matriz no objeto x1
+> x1
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+> dim(x1) # dimensões de x
+[1] 3 4
+> # O primeiro valor retornado em dim(x1) é número de linhas e o segundo o número de colunas!
+> # Índice das Matrizes
+> x1[2,5] # elemento da linha 2 e coluna 5
+Error in x1[2, 5] : índice fora de limites
+> x1[2,4] # elemento da linha 2 e coluna 4
+[1] 11
+> # Extrair uma linha ou coluna inteira da matriz, usando apenas um número e a vírgula!
+> x1[,4]
+[1] 10 11 12
+> x1[,4] # extraindo a quarta coluna
+[1] 10 11 12
+> x1[3,] # extraindo a terceira lina
+[1]  3  6  9 12
+> # Extraindo mais de linha ou coluna. Resultado: outra matriz
+> x1[c(1,3)] # extraindo as linhas 1 e 3
+[1] 1 3
+> x1[c(1,3),] # extraindo as linhas 1 e 3
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    3    6    9   12
+> x1[,c(2,4)] # extraindo as colunas 2 e 4
+     [,1] [,2]
+[1,]    4   10
+[2,]    5   11
+[3,]    6   12
+> x1[c(2,3), c(3,4)]
+     [,1] [,2]
+[1,]    8   11
+[2,]    9   12
+> x1[c(2,3), c(3,4)] # extraindo matrz 2 x 2
+     [,1] [,2]
+[1,]    8   11
+[2,]    9   12
+> x1[3, x1[3,]>6]
+[1]  9 12
+> x1[3, x1[3,]>6] # valores da linha 3 maiores que 6
+[1]  9 12
+#
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+#
+# Arrays
+# Existem duas maneiras fáceis de se criar um array. A primeira delas é atribuindo dimensões a um vetor com o comando dim ( ).
+> # Exemplo
+> x<-1:12 #cria vetor em x
+> x # exibe o vetor x
+dim (x) <- c(2, 3, 2) #atribuindo 3 dimensões a x
+ x # exibe x
+# A outra maneira é usando o comando array ()
+> # O primeiro e segundo argumentos são: um vetor de dados e as dimensões
+> # Exemplo
+> y = array(1:12, c(2,3,2)) # array com 3 dimensões
+> y # exibindo o conteúdo de y
+# Podemos comparar e testar os resultados:
+# Podemos comparar e testar os resultados:
+is.array (x) # x é uma array?
+[1] TRUE
+dim(x) #exibe o atributo "dim" de x
+[1] 2 3 2
+is.array (y) # y é uma array?
+[1] TRUE
+dim(y) #exibe o atributo "dim" de y
+#
+# Índices em Arrays
+# Os índices em arrays funcionam de maneira semelhante aos índices de vetores e matrizes
+# Os elementos de cada dimensáo do array sao separados por vírgula dentro de colchetes.
+x[1,2,1] #elemento lat=l, 1ong=2 e alt=l
+[1] 3
+#
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+#
+# Fator
+#Fatores sao vetores em que os elementos pertencem a uma ou mais categorias temáticas. 
+#Por exemplo, se numa amostra há homens e mulheres, um vetor contendo as categorias masculino (M) e feminino (F) é representado no R como um fator.
+#Pode-se criar um fator usando o comando factor(), ou o comando gl().
+x.factor <-factor (c("M", "M", "M", "F", "F", "F")) #fator
+x.factor  #exibe x.factor
+[1] M M M F F F
+Levels: F M
+# Usando gl()
+y<-gl (n=3, k=5, labels=c("Facebook", "TikTok", "WhatsApp")) #cria um fator
+y #exibir y
+[1] Facebook Facebook Facebook Facebook Facebook TikTok   TikTok   TikTok   TikTok   TikTok  
+[11] WhatsApp WhatsApp WhatsApp WhatsApp WhatsApp
+Levels: Facebook TikTok WhatsApp
+> attributes(y) # atributos de y
+$levels
+[1] "Facebook" "TikTok"   "WhatsApp"
+
+$class
+[1] "factor"
+# Fatores apresentam diferentes níveis que funcionam como "categorias" nas quais os dados estáo organizados.
+# Pode-se verificar os "níveis" de um fator usando o comando levels()
+> levels(y)
+[1] "Facebook" "TikTok"   "WhatsApp"
+# Dados estruturados como fatores sao extremamente importantes em análises estatísticas!
+# Pode-se converter um vetor em fator usando o comando as.factor().
+# Exemplo:
+z<-c(1,1,2,2,3,3) # cria um vetor
+zfac<-as.factor(z) # transforma z em fator
+zfac # exibe zfac
+# Outro exemplo:
+respostas = c("S", "S", "N", "Não sei", "S", "N", NA) # um vetor com as respostas de um questionário
+resp.fator <- as.factor(respostas)
+resp.fator
+[1] S       S       N       Não sei S       N       <NA>   
+Levels: N Não sei S 
+# Importante frisar que, nos fatores, os índices funcionam como nos vetores!
+zfac[3:5] # do terceiro ao quinto elemento de zfac
+[1] 2 2 3
+Levels: 1 2 3
+>resp.fator[c(1:2,5)]
+[1] S S S
+Levels: N Não sei S
+> resp.fator[c(3,6)]
+[1] N N
+Levels: N Não sei S
+#
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+#
+# Data.Frames
+# data.frames são semelhantes às matrizes: possuem linhas e colunas (duas dimensões).
+# Diferente das matrizes, as colunas podem armazenar elementos de tipos diferentes. 
+# data.frames costituem uma das melhores formas de armazenar dados em R !
+# Cada linha corresponde a uma unidade (também chamada de instância ou observação) 
+# Cada coluna representa uma variável (ou atributo) observado em cada unidade.
+# Entretanto, é necessário que cada coluna tenha o mesmo tamanho.
+# Exemplo
+# Suponha um experimento para avaliar o desempenho escolar de uma classe de alunos
+# Para cada aluno (unidade), sao registrados o nome, a idade, o sexo e a nota final.
+#
+# Cada aluno compóe uma unidade ou instancia (uma linha).
+# As diferentes variáveis, representadas nas colunas, tém valores correspondentes a cada um dos alunos. 
+# A coluna "Nome" é um vetor de caracteres; 
+# A coluna "Idade" é um vetor numérico;
+# A coluna "Sexo" é um fator (ou vetor de caracteres);
+# A coluna "NF" (nota final) é um vetor numérico;
+# Neste exemplo iremos criar o data.frame no console, por etapas, através de comandos básicos:
+
+Nome<-c("José Santos",   #criando o vetor Nomes
+"Angela Dias",
+"Aline Souza",
+"Mayara Costa" ,
+"Lara Lins",
+"Nícolas Barros")
+> Nome
+[1] "José Santos"    "Angela Dias"    "Aline Souza"    "Mayara Costa"   "Lara Lins"     
+[6] "Nícolas Barros"
+Idade<-c(17,17,16,15,15,13) # criando o vetor Idade
+> Idade #exibe Idade
+[1] 17 17 16 15 15 13
+Sexo<-factor (c("M", "F", "F", "F", "F", "M")) # criando "Sexo" como fator
+Sexo # exibir Sexo
+[1] M F F F F M
+Levels: F M
+NF<-c(92,75,81,87,90,88)
+> NF # exibir NF (notas finais)
+[1] 92 75 81 87 90 88
+# Após a criação de cada um dos vetores que compóem as colunas, 
+# pode-se reunir tudo em um objeto com a estrutura de dados de um data.frame. 
+escola<-data.frame (Nome,Idade,Sexo,NF) #criando
+escola # exibindo
+# Note que uma numeracáo automática surgiu para cada um dos alunos.
+# data.frames, ao serem criados, possuem um atributo que representa os nomes das linhas (row.names)
+# por padráo, sao números inteiros que vão do um ao número total!
+# Pode-se ver todos os atributos do objeto " escola" usando o comando attibutes():
+attributes(escola)
+$names
+[1] "Nome"  "Idade" "Sexo"  "NF"   
+
+$class
+[1] "data.frame"
+
+$row.names
+[1] 1 2 3 4 5 6
+#
+#Manuseando um Data.frame
+# Pode-se manusear um data.frame adicionando ou eliminando colunas ou linhas, assim como em matrizes. 
+# Podem-se usar os comandos cbind() e rbind() para adicionar colunas e linhas a um data-frame.
+# Exemplo: incluindo uma coluna com o conceito dos alunos:
+escola<-cbind(escola, Conceito = c("A","C","B","B","A","B")) # adicionando uma coluna 
+escola # exibindo escola
+ escola
+            Nome Idade Sexo NF Conceito
+1    José Santos    17    M 92        A
+2    Angela Dias    17    F 75        C
+3    Aline Souza    16    F 81        B
+4   Mayara Costa    15    F 87        B
+5      Lara Lins    15    F 90        A
+6 Nícolas Barros    13    M 88        B
+#Adicionando uma nova linha com rbind()
+escola<-rbind(escola,c("Caio Pio",12,"M",99,"A")) # adicionando uma linha
+> escola
+            Nome Idade Sexo NF Conceito
+1    José Santos    17    M 92        A
+2    Angela Dias    17    F 75        C
+3    Aline Souza    16    F 81        B
+4   Mayara Costa    15    F 87        B
+5      Lara Lins    15    F 90        A
+6 Nícolas Barros    13    M 88        B
+7       Caio Pio    12    M 99        A
+#
+#Índice dos data.frames
+# Nos objetos annazenados como data.frames, os elementos podem ser acessados de duas formas.
+# A primeira delas é usando índices de linha e coluna separados por vírgula dentro de colchetes, exatamente como em matrizes.
+# Exemplo:
+escola [2,1] # elemento da linha 2, coluna 1
+[1] "Angela Dias"
+escola [2,] # toda a linha 2
+         Nome Idade Sexo NF Conceito
+2 Angela Dias    17    F 75        C
+# Observação:
+> escola [,1] #exibir conteúdo da coluna 1 
+[1] "José Santos"    "Angela Dias"    "Aline Souza"    "Mayara Costa"   "Lara Lins"     
+[6] "Nícolas Barros" "Caio Pio"
+#
+# A outra maneira de acessar os elementos de um data.frame é usar o nome do objeto (data.frame), 
+# o símbolo $e o nome da coluna de interesse. Veja:
+escola$Nome # acessando a coluna Nome
+[1] "José Santos"    "Angela Dias"    "Aline Souza"    "Mayara Costa"   "Lara Lins"     
+[6] "Nícolas Barros" "Caio Pio"  
