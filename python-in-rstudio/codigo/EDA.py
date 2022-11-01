@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 import seaborn as sns
 
-#df = pd.read_csv('D:/Github/Ciencia-de-Dados-2022/python-in-rstudio/dados/StudentsPerformance.csv')
+df = pd.read_csv('D:/Github/Ciencia-de-Dados-2022/python-in-rstudio/dados/StudentsPerformance.csv')
 df = pd.read_csv('~/Library/Mobile Documents/com~apple~CloudDocs/GitHub/Ciencia-de-Dados-2022/python-in-rstudio/dados/StudentsPerformance.csv')
 df
 
